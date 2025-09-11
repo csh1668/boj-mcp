@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "boj-mcp": {
+      "command": "node",
+      "args": ["dist/index.js"]
+    }
+  }
+}
