@@ -8,10 +8,11 @@ BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
 
 ### 사용 방법
 
-repo 클론 후, Cursor로 열기
+repo 클론 후, Cursor로 열고 터미널 창에 아래 명령어를 입력합니다.
 
 ```
-npm i && pnpm run
+pnpm i
+pnpm start
 ```
 
-이후 Cursor 채팅창에 BOJ-MCP를 이용해서 문제를 검색해달라고 입력합니다.
+이후 Cursor 채팅창에 BOJ-MCP를 이용해서 생성형 AI에게 문제를 검색해달라고 부탁합니다.
