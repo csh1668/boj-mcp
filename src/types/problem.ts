@@ -1,0 +1,31 @@
+import { z } from "zod";
+import { Problem as SolvedAcProblem } from "./solved-ac-types.js";
+
+// MCP에 반환할 간소화된 문제 스키마/타입
+export const mcpProblemSchema = z.object({
+	id: z.number(),
+	title: z.string(),
+	level: z.number(),
+	accepted: z.number(),
+	averageTries: z.number(),
+	tags: z.array(z.string())
+});
+export type McpProblem = z.infer<typeof mcpProblemSchema>;
+
+export function convertToMcpProblem(problem: SolvedAcProblem): McpProblem {
+	return {
+		id: problem.problemId,
+		title: problem.titleKo,
+		level: problem.level,
+		accepted: problem.acceptedUserCount,
+		averageTries: problem.averageTries,
+		tags: problem.tags.map(t => {
+			const koName = t.displayNames.find(d => d.language === "ko");
+			return (koName?.name ?? t.key);
+		})
+	};
+}
+
+export function convertToMcpProblems(problems: SolvedAcProblem[]): McpProblem[] {
+	return problems.map(convertToMcpProblem);
+}
