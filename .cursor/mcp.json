@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "boj-mcp": {
-      "command": "npx",
-      "args": ["-y", "boj-mcp"]
+    "boj-mcp-local": {
+      "command": "node",
+      "args": ["dist/index.js"]
     }
   }
 }
