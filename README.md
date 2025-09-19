@@ -6,11 +6,29 @@ BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
 
 한창 개발 중입니다.
 
-### 사용 방법
+### 설치 방법
 
-#### 1) npm 사용
+#### 1) npm 사용 (권장)
 
-`mcp.json`에 다음을 추가합니다. Cursor 또는 Claude Desktop 모두 동일하게 동작합니다.
+##### Claude Code
+```bash
+claude mcp add boj-mcp -- npx -y boj-mcp
+```
+
+##### Codex
+```bash
+codex mcp add boj-mcp -- npx -y boj-mcp
+```
+
+##### Gemini Cli
+```bash
+gemini mcp add boj-mcp npx -y boj-mcp
+```
+
+##### Cursor
+
+`Ctrl + Shift + P`를 누르고 `Open MCP Settings`를 찾아 들어갑니다.
+`New MCP Server`를 클릭하고 다음 내용을 붙여넣습니다.
 
 ```json
 {
@@ -23,13 +41,11 @@ BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
 }
 ```
 
-이후 클라이언트에서 MCP 서버를 자동으로 실행합니다.
-
 #### 2) 로컬 빌드 후 실행
 
-Repo를 클론한 뒤:
-
-```
+```bash
+git clone https://github.com/csh1668/boj-mcp
+cd boj-mcp
 pnpm i
 pnpm start
 ```
@@ -46,3 +62,5 @@ pnpm start
   }
 }
 ```
+
+### 사용 방법
