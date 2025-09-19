@@ -1,11 +1,13 @@
 import { z } from "zod";
 import { Problem as SolvedAcProblem } from "./solved-ac-types.js";
+import { levelToLabel } from "../utils/level-to-label.js";
 
 // MCP에 반환할 간소화된 문제 스키마/타입
 export const mcpProblemSchema = z.object({
 	id: z.number(),
 	title: z.string(),
 	level: z.number(),
+	levelLabel: z.string(),
 	accepted: z.number(),
 	averageTries: z.number(),
 	tags: z.array(z.string())
@@ -17,6 +19,7 @@ export function convertToMcpProblem(problem: SolvedAcProblem): McpProblem {
 		id: problem.problemId,
 		title: problem.titleKo,
 		level: problem.level,
+		levelLabel: levelToLabel(problem.level),
 		accepted: problem.acceptedUserCount,
 		averageTries: problem.averageTries,
 		tags: problem.tags.map(t => {
