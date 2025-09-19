@@ -19,5 +19,6 @@ for (const tool of allTools) {
   );
 }
 
+console.error("BOJ MCP Server is running...");
 const transport = new StdioServerTransport();
 await server.connect(transport);

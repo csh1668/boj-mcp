@@ -1,22 +1,44 @@
 {
   "name": "boj-mcp",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Unofficial MCP server for BOJ (solved.ac)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "boj-mcp": "bin/boj-mcp.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "prepack": "pnpm run build"
   },
-  "type": "module",
-  "keywords": [],
+  "engines": {
+    "node": ">=18.18.0 || >=20.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "boj",
+    "solvedac"
+  ],
   "author": "csh1668",
   "license": "MIT",
-  "description": "",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.5",
-    "zod": "^3.23.8"
+    "@modelcontextprotocol/sdk": "^1.18.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^24.3.1",
+    "@types/node": "^24.5.2",
     "typescript": "^5.9.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

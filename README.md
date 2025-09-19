@@ -8,11 +8,44 @@ BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
 
 ### 사용 방법
 
-repo 클론 후, Cursor로 열고 터미널 창에 아래 명령어를 입력합니다.
+#### 1) npx로 바로 실행 (권장)
+
+`mcp.json`에 다음을 추가합니다. Cursor 또는 Claude Desktop 모두 동일하게 동작합니다.
+
+```json
+{
+  "mcpServers": {
+    "boj-mcp": {
+      "command": "npx",
+      "args": ["-y", "boj-mcp"]
+    }
+  }
+}
+```
+
+이후 클라이언트에서 MCP 서버를 자동으로 실행합니다.
+
+참고: Notion MCP Server 설정 방식과 동일한 UX를 제공합니다. [makenotion/notion-mcp-server](https://github.com/makenotion/notion-mcp-server)
+
+#### 2) 로컬 빌드 후 실행 (대안)
+
+Repo를 클론한 뒤:
 
 ```
 pnpm i
-pnpm start
+pnpm build
+node dist/index.js
 ```
 
-이후 Cursor 채팅창에 BOJ-MCP를 이용해서 생성형 AI에게 문제를 검색해달라고 부탁합니다.
+또는 Cursor 설정에 다음처럼 추가합니다.
+
+```json
+{
+  "mcpServers": {
+    "boj-mcp": {
+      "command": "node",
+      "args": ["dist/index.js"]
+    }
+  }
+}
+```
