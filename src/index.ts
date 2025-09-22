@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { allTools } from "./tools/index.js";
+import { allTools } from "@/tools/index";
 
 const server = new McpServer({
   name: "boj-mcp",
