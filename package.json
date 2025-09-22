@@ -1,10 +1,9 @@
 {
   "name": "boj-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Unofficial MCP server for BOJ (solved.ac)",
   "type": "module",
   "main": "dist/index.js",
-  
   "bin": {
     "boj-mcp": "bin/boj-mcp.js"
   },
