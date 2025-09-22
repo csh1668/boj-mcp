@@ -4,7 +4,7 @@
   "description": "Unofficial MCP server for BOJ (solved.ac)",
   "type": "module",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  
   "bin": {
     "boj-mcp": "bin/boj-mcp.js"
   },
@@ -15,9 +15,11 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node dist/index.js",
-    "prepack": "pnpm run build"
+    "build": "vite build",
+    "start": "vite build && node dist/index.js",
+    "prepack": "pnpm run build",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "engines": {
     "node": ">=18.18.0 || >=20.6.0"
@@ -36,7 +38,9 @@
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^2.1.1",
+    "vite": "^5.4.10"
   },
   "publishConfig": {
     "access": "public"
