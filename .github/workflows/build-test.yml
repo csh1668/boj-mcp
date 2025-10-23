@@ -1,0 +1,69 @@
+name: Build and Test
+
+on:
+  push:
+    branches: ["main", "release"]
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    branches: ["main", "release"]
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
+
+concurrency:
+  group: "${{ github.ref }}-ci"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: pnpm install
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Node.js setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript type check
+        run: pnpm exec tsc --noEmit
+
+      - name: Build and check warnings
+        shell: bash
+        run: |
+          set -e
+          OUTPUT=$(pnpm run build 2>&1)
+          echo "$OUTPUT"
+          if echo "$OUTPUT" | grep -Ei "warning"; then
+            echo "Warnings detected in build output"
+            exit 1
+          fi
+          echo "No warnings found."
+
+      - name: Check build output
+        shell: bash
+        run: |
+          if [ -d "dist" ]; then
+            echo "dist directory created"
+            ls -la dist/
+          else
+            echo "dist directory not found"
+            exit 1
+          fi
