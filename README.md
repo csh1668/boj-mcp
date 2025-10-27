@@ -10,6 +10,34 @@ BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
 
 #### 1) npm 사용 (권장)
 
+컴퓨터에 [`node.js`](https://nodejs.org/ko/download)가 설치되어 있어야 합니다. 
+
+##### Claude Desktop
+
+Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+해당 위치에 파일이 없으면 생성합니다.
+
+```json
+{
+  "mcpServers": {
+    "boj-mcp": {
+      "command": "npx",
+      "args": ["-y", "boj-mcp"]
+    }
+  }
+}
+```
+
+위 내용을 추가하고 Claude Desktop을 종료 후 다시 시작합니다.
+
+<img width="427" height="446" alt="image" src="https://github.com/user-attachments/assets/e6cd0273-52fe-42a9-93a4-40917c48598b" />
+
+정상적으로 설치가 되었다면 위와 같이 표시됩니다.
+
+
 ##### Claude Code
 ```bash
 claude mcp add boj-mcp -- npx -y boj-mcp
