@@ -1,6 +1,6 @@
 import { defineTool } from "@/types/tool-schema";
 import z from "zod";
-import { getTagList } from "./tag-list";
+import { getTagList } from "./list-tag";
 
 export const searchTagTool = defineTool({
   name: "search-tag",

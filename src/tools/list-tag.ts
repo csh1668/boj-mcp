@@ -60,8 +60,8 @@ export async function getTagList(): Promise<McpTagList> {
 	return await inFlightFetch;
 }
 
-export const tagListTool = defineTool({
-	name: "tag-list",
+export const listTagTool = defineTool({
+	name: "list-tag",
 	title: "Algorithm Tags List",
 	description: "BOJ의 알고리즘 태그 목록을 조회합니다.",
 	inputSchema: {},
