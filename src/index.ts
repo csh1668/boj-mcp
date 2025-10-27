@@ -1,7 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { allTools } from "@/tools/index";
-import { allPrompts } from "@/prompts/index";
 
 const server = new McpServer({
   name: "boj-mcp",
@@ -17,18 +16,6 @@ for (const tool of allTools) {
       inputSchema: tool.inputSchema,
     },
     tool.handler
-  );
-}
-
-for (const prompt of allPrompts) {
-  server.registerPrompt(
-    prompt.name,
-    {
-      title: prompt.title,
-      description: prompt.description,
-      argsSchema: prompt.argsSchema,
-    },
-    prompt.handler
   );
 }
 

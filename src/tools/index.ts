@@ -3,6 +3,8 @@ import { listTagTool } from "@/tools/list-tag";
 import { searchTagTool } from "./search-tag";
 import { listContestTool } from "./list-contest";
 import { searchContestTool } from "./search-contest";
+import { analyzeContestTool } from "./analyze-contest";
+import { recommendContestProblemsTool } from "./recommend-contest-problems";
 
 export const allTools = [
   searchProblemTool,
@@ -10,4 +12,6 @@ export const allTools = [
   searchTagTool,
   listContestTool,
   searchContestTool,
+  analyzeContestTool,
+  recommendContestProblemsTool,
 ];
