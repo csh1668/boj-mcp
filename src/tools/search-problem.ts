@@ -23,8 +23,9 @@ export const searchProblemTool = defineTool({
     ),
     sort: z.enum(["id", "level", "title", "solved", "average_try", "random"]).optional().default("solved").describe("정렬 기준"),
     direction: z.enum(["asc", "desc"]).optional().default("asc").describe("정렬 방향"),
+    include_tags: z.boolean().optional().default(true).describe("태그 정보를 포함할지 여부 (알고리즘 태그 정보는 힌트가 될 수 있으므로, 사용자가 학습을 원한다면 false로 설정하세요)"),
   },
-  handler: async ({ query, sort, direction }) => {
+  handler: async ({ query, sort, direction, include_tags }) => {
     const params = new URLSearchParams({ query, direction, sort });
     const response = await fetch(`https://solved.ac/api/v3/search/problem?${params.toString()}`);
     const data = await response.json();
@@ -34,6 +35,15 @@ export const searchProblemTool = defineTool({
       count: parsed.count,
       items: convertToMcpProblems(parsed.items),
     };
+
+    if (!include_tags) {
+      simplified.items = simplified.items.map((item) => {
+        return {
+          ...item,
+          tags: [],
+        };
+      });
+    }
 
     const validated = mcpSearchProblemResponseSchema.parse(simplified);
 
