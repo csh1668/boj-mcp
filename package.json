@@ -1,6 +1,6 @@
 {
   "name": "boj-mcp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Unofficial MCP server for BOJ (solved.ac)",
   "type": "module",
   "main": "dist/index.js",
