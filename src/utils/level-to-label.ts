@@ -10,7 +10,7 @@ const numberToRome = (number: number) => {
 }
 
 export const levelToLabel = (level: number) => {
-  if (level < 0) return "Unrated / Not Ratable";
+  if (level <= 0) return "Unrated / Not Ratable";
   if (level <= 5) return `Bronze ${numberToRome(6 - level)}`;
   if (level <= 10) return `Silver ${numberToRome(11 - level)}`;
   if (level <= 15) return `Gold ${numberToRome(16 - level)}`;

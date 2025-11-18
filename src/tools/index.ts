@@ -1,7 +1,17 @@
 import { searchProblemTool } from "@/tools/search-problem";
-import { tagListTool } from "@/tools/tag-list";
+import { listTagTool } from "@/tools/list-tag";
+import { searchTagTool } from "./search-tag";
+import { listContestTool } from "./list-contest";
+import { searchContestTool } from "./search-contest";
+import { analyzeContestTool } from "./analyze-contest";
+import { recommendContestProblemsTool } from "./recommend-contest-problems";
 
 export const allTools = [
   searchProblemTool,
-  tagListTool,
+  listTagTool,
+  searchTagTool,
+  listContestTool,
+  searchContestTool,
+  analyzeContestTool,
+  recommendContestProblemsTool,
 ];

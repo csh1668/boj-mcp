@@ -5,8 +5,8 @@ export type ToolInputShape = ZodRawShape;
 
 export type ToolConfig<InputArgs extends ToolInputShape> = {
   name: string;
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   inputSchema: InputArgs;
   handler: ToolCallback<InputArgs>;
 };
