@@ -18,7 +18,9 @@
     "start": "vite build && node dist/index.js",
     "prepack": "pnpm run build",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write ."
   },
   "engines": {
     "node": ">=18.18.0 || >=20.6.0"
@@ -36,6 +38,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^24.5.2",
     "typescript": "^5.9.2",
     "vitest": "^2.1.1",

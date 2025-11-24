@@ -99,7 +99,7 @@ export async function fetchAPI(
       // 재시도 가능한 에러인지 확인
       if (isRetryableError(response.status) && attempt < maxRetries) {
         lastResponse = response;
-        const delayMs = retryDelay * Math.pow(2, attempt); // Exponential backoff
+        const delayMs = retryDelay * 2 ** attempt; // Exponential backoff
         await delay(delayMs);
         continue;
       }
@@ -113,7 +113,7 @@ export async function fetchAPI(
 
       // 네트워크 오류 등 재시도 가능한 에러인 경우
       if (attempt < maxRetries && !lastResponse) {
-        const delayMs = retryDelay * Math.pow(2, attempt); // Exponential backoff
+        const delayMs = retryDelay * 2 ** attempt; // Exponential backoff
         await delay(delayMs);
         continue;
       }

@@ -1,4 +1,4 @@
-import { ProblemTag, problemTagSchema } from "@/types/solved-ac-types";
+import { type ProblemTag, problemTagSchema } from "@/types/solved-ac-types";
 import { defineTool } from "@/types/tool-schema";
 import { z } from "zod";
 import { convertToMcpTags, mcpTagSchema } from "@/types/tag";

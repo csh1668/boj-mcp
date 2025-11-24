@@ -17,6 +17,6 @@ export const levelToLabel = (level: number) => {
   if (level <= 20) return `Platinum ${numberToRome(21 - level)}`;
   if (level <= 25) return `Diamond ${numberToRome(26 - level)}`;
   if (level <= 30) return `Ruby ${numberToRome(31 - level)}`;
-  if (level == 31) return "Master";
+  if (level === 31) return "Master";
   return "Unrated / Not Ratable";
 }

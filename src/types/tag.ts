@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ProblemTag } from "@/types/solved-ac-types";
+import type { ProblemTag } from "@/types/solved-ac-types";
 
 // MCP에 반환할 간소화된 태그 스키마/타입
 export const mcpTagSchema = z.object({

@@ -1,5 +1,5 @@
-import { ZodRawShape } from "zod";
-import { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { ZodRawShape } from "zod";
+import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export type ToolInputShape = ZodRawShape;
 

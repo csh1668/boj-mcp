@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Problem as SolvedAcProblem } from "@/types/solved-ac-types";
+import type { Problem as SolvedAcProblem } from "@/types/solved-ac-types";
 import { levelToLabel } from "@/utils/level-to-label";
 
 // MCP에 반환할 간소화된 문제 스키마/타입
