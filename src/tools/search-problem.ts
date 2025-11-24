@@ -2,6 +2,7 @@ import { problemSchema } from "@/types/solved-ac-types";
 import { defineTool } from "@/types/tool-schema";
 import { z } from "zod";
 import { convertToMcpProblems, mcpProblemSchema } from "@/types/problem";
+import { fetchAPI } from "@/utils/api";
 
 const rawSearchProblemResponseSchema = z.object({
   count: z.number(),
@@ -26,10 +27,11 @@ export const searchProblemTool = defineTool({
     include_tags: z.boolean().optional().default(true).describe("태그 정보를 포함할지 여부 (알고리즘 태그 정보는 힌트가 될 수 있으므로, 사용자가 학습을 원한다면 false로 설정하세요)"),
   },
   handler: async ({ query, sort, direction, include_tags }) => {
-    const params = new URLSearchParams({ query, direction, sort });
-    const response = await fetch(`https://solved.ac/api/v3/search/problem?${params.toString()}`);
-    const data = await response.json();
-    const parsed = rawSearchProblemResponseSchema.parse(data);
+    try {
+      const params = new URLSearchParams({ query, direction, sort });
+      const response = await fetchAPI(`https://solved.ac/api/v3/search/problem?${params.toString()}`);
+      const data = await response.json();
+      const parsed = rawSearchProblemResponseSchema.parse(data);
 
     const simplified = {
       count: parsed.count,
@@ -45,10 +47,25 @@ export const searchProblemTool = defineTool({
       });
     }
 
-    const validated = mcpSearchProblemResponseSchema.parse(simplified);
+      const validated = mcpSearchProblemResponseSchema.parse(simplified);
 
-    return {
-      content: [{ type: "text", text: JSON.stringify(validated) }]
-    };
+      return {
+        content: [{ type: "text", text: JSON.stringify(validated) }]
+      };
+    } catch (error) {
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : '알 수 없는 오류가 발생했습니다.';
+      
+      return {
+        content: [{ 
+          type: "text", 
+          text: JSON.stringify({ 
+            error: true, 
+            message: `문제 검색 중 오류가 발생했습니다: ${errorMessage}` 
+          }) 
+        }]
+      };
+    }
   }
 });
