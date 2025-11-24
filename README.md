@@ -29,7 +29,7 @@ MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
   "mcpServers": {
     "boj-mcp": {
       "command": "npx",
-      "args": ["-y", "boj-mcp"]
+      "args": ["-y", "boj-mcp", "--handle=your-handle"]
     }
   }
 }
@@ -45,16 +45,22 @@ MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 ##### Claude Code
 ```bash
 claude mcp add boj-mcp -- npx -y boj-mcp
+# OR
+claude mcp add boj-mcp -- npx -y boj-mcp --handle=your-handle
 ```
 
 ##### Codex
 ```bash
 codex mcp add boj-mcp -- npx -y boj-mcp
+# OR
+codex mcp add boj-mcp -- npx -y boj-mcp --handle=your-handle
 ```
 
 ##### Gemini Cli
 ```bash
 gemini mcp add boj-mcp npx -y boj-mcp
+# OR
+gemini mcp add boj-mcp npx -y boj-mcp --handle=your-handle
 ```
 
 ##### Cursor
@@ -67,7 +73,7 @@ gemini mcp add boj-mcp npx -y boj-mcp
   "mcpServers": {
     "boj-mcp": {
       "command": "npx",
-      "args": ["-y", "boj-mcp"]
+      "args": ["-y", "boj-mcp", "--handle=your-handle"]
     }
   }
 }

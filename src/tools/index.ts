@@ -5,6 +5,7 @@ import { listContestTool } from "./list-contest";
 import { searchContestTool } from "./search-contest";
 import { analyzeContestTool } from "./analyze-contest";
 import { recommendContestProblemsTool } from "./recommend-contest-problems";
+import { userTop100Tool } from "./user-top100";
 
 export const allTools = [
   searchProblemTool,
@@ -14,4 +15,5 @@ export const allTools = [
   searchContestTool,
   analyzeContestTool,
   recommendContestProblemsTool,
+  userTop100Tool,
 ];
