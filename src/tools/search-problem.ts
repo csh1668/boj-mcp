@@ -25,9 +25,24 @@ export const searchProblemTool = defineTool({
     sort: z.enum(["id", "level", "title", "solved", "average_try", "random"]).optional().default("solved").describe("정렬 기준"),
     direction: z.enum(["asc", "desc"]).optional().default("asc").describe("정렬 방향"),
     include_tags: z.boolean().optional().default(true).describe("태그 정보를 포함할지 여부 (알고리즘 태그 정보는 힌트가 될 수 있으므로, 사용자가 학습을 원한다면 false로 설정하세요)"),
+    // excludeUserSolved: z.boolean().optional().default(false).describe("사용자가 푼 문제를 제외할지 여부 (기본값: false)"),
+    userSolved: z.enum(["all", "solved", "not_solved"]).optional().default("all").describe("all: 모든 문제, solved: 사용자가 푼 문제, not_solved: 사용자가 풀지 않은 문제")
   },
-  handler: async ({ query, sort, direction, include_tags }) => {
+  handler: async ({ query, sort, direction, include_tags, userSolved }) => {
     try {
+      const userHandle = process.env.BOJ_HANDLE;
+
+      if (userSolved && userHandle) {
+        switch (userSolved) {
+          case "solved":
+            query += ` @${userHandle}`; break;
+          case "not_solved":
+            query += ` -@${userHandle}`; break;
+          default:
+            break;
+        }
+      }
+
       const params = new URLSearchParams({ query, direction, sort });
       const response = await fetchAPI(`https://solved.ac/api/v3/search/problem?${params.toString()}`);
       const data = await response.json();
