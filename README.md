@@ -1,5 +1,9 @@
 ## BOJ-MCP
 
+[![npm version](https://img.shields.io/npm/v/boj-mcp.svg)](https://www.npmjs.com/package/boj-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release to NPM](https://github.com/csh1668/boj-mcp/actions/workflows/release-to-npm.yml/badge.svg)](https://github.com/csh1668/boj-mcp/actions/workflows/release-to-npm.yml)
+
 백준에 있는 문제를 검색하는 기능을 제공하는 **비공식** MCP입니다.
 
 BOJ-MCP지만, solved.ac의 비공식 API를 사용합니다.
@@ -92,3 +96,18 @@ pnpm start
 ```
 
 ### 사용 방법
+
+설치가 완료되면 AI에게 다음과 같이 질문하여 백준 문제를 검색하거나 추천받을 수 있습니다.
+
+#### 1. 문제 검색
+- "골드 5 난이도의 DP 문제 찾아줘"
+- "다익스트라 문제 중 푼 사람이 10명 이하인 문제 찾아줘"
+
+#### 2. 문제 추천
+- "코딩 테스트 준비를 위해 실버 난이도의 구현 문제 5개 추천해줘"
+- "ICPC 예선 대비를 위한 문제 세트 추천해줘"
+
+#### 3. 대회 및 태그 정보
+- "UCPC 2023 대회의 출제 경향을 분석해줘"
+- "비트마스킹 태그가 붙은 문제들은 어떤 게 있어?"
+
