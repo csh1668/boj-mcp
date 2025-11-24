@@ -10,7 +10,8 @@ export const mcpProblemSchema = z.object({
 	levelLabel: z.string(),
 	accepted: z.number(),
 	averageTries: z.number(),
-	tags: z.array(z.string())
+	tags: z.array(z.string()),
+	url: z.string()
 });
 export type McpProblem = z.infer<typeof mcpProblemSchema>;
 
@@ -25,7 +26,8 @@ export function convertToMcpProblem(problem: SolvedAcProblem): McpProblem {
 		tags: problem.tags.map(t => {
 			const koName = t.displayNames.find(d => d.language === "ko");
 			return (koName?.name ?? t.key);
-		})
+		}),
+		url: `https://www.acmicpc.net/problem/${problem.problemId}`
 	};
 }
 
