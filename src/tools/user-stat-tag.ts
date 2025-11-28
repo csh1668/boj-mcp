@@ -29,7 +29,7 @@ export const userStatTagTool = defineTool({
   title: "User Stat Tag",
   description: "사용자가 푼 문제 수를 알고리즘 태그 별로 조회합니다.",
   inputSchema: {
-    handle: z.string().describe("사용자 핸들 (기본적으로 환경 변수 BOJ_HANDLE로 제공되므로 입력이 필요하지 않음)"),
+    handle: z.string().optional().describe("사용자 핸들 (기본적으로 환경 변수 BOJ_HANDLE로 제공되므로 입력이 필요하지 않음)"),
   },
   handler: async ({ handle }) => {
     const userHandle = handle || process.env.BOJ_HANDLE;
